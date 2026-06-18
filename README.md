@@ -1,0 +1,41 @@
+# Questly — SaaS Landing Page
+
+Full-viewport hero section for **Questly**, built with React, TypeScript, Tailwind CSS 3, and Vite.
+
+## Stack
+
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS 3
+- [lucide-react](https://lucide.dev/) icons
+
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## Scripts
+
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Production build         |
+| `npm run preview` | Preview production build |
+
+## Project structure
+
+```
+src/
+  App.tsx
+  main.tsx
+  index.css
+  components/
+    Hero.tsx
+    Navbar.tsx
+    Logo.tsx
+    DashboardMockup.tsx
+```
