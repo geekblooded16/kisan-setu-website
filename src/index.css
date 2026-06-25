@@ -7,10 +7,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
   }
 
   body {
     margin: 0;
+    @apply text-gray-900;
   }
 }
 
@@ -105,7 +107,8 @@
   .animate-fade-down,
   .animate-hero-rise,
   .animate-float-left,
-  .animate-float-right {
+  .animate-float-right,
+  .animate-shiny-text {
     animation: none;
   }
 }

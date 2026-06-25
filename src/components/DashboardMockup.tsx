@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
   ChevronLeft,
   ChevronRight,
-  Cloud,
   Copy,
   Grid,
   Layers,
@@ -12,7 +11,6 @@ import {
   Plus,
   RotateCw,
   Share,
-  Sprout,
   Mic,
 } from 'lucide-react'
 import Logo from './Logo'
