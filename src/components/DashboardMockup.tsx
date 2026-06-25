@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import {
   ChevronLeft,
   ChevronRight,
-  Compass,
+  Cloud,
   Copy,
   Grid,
   Layers,
@@ -12,7 +12,8 @@ import {
   Plus,
   RotateCw,
   Share,
-  Sparkles,
+  Sprout,
+  Mic,
 } from 'lucide-react'
 import Logo from './Logo'
 
@@ -62,49 +63,49 @@ export function ScaledDashboard({ children }: { children: ReactNode }) {
   )
 }
 
-const recentArticles = [
-  'Signs a parent needs more help at home',
-  'How to choose an in-home caregiver',
-  'Medication reminders for seniors',
-  'Fall prevention checklist for families',
+const recentQueries = [
+  'What is the weather forecast for next week?',
+  'Show PM-KISAN scheme eligibility',
+  'Wheat mandi price in Indore today',
+  'How to treat yellow rust in wheat?',
 ]
 
-const subjectCards = [
-  { title: 'Elder Care', count: 24 },
-  { title: 'Mobility', count: 18 },
-  { title: 'Home Safety', count: 15 },
+const serviceCards = [
+  { title: 'Weather & Advisory', count: 5 },
+  { title: 'Mandi Prices', count: 12 },
+  { title: 'Govt Schemes', count: 8 },
 ]
 
 const inboxRows = [
   {
-    question: 'What are early signs of dementia in elderly parents?',
-    volume: '18.2K',
-    difficulty: 'Medium',
-    status: 'Drafting',
+    query: 'PM-KISAN 17th installment status check',
+    category: 'Schemes',
+    language: 'Hindi',
+    status: 'Answered',
   },
   {
-    question: 'How much does in-home care cost per month?',
-    volume: '12.4K',
-    difficulty: 'Low',
-    status: 'Ready',
+    query: 'Soybean rate at Latur mandi today',
+    category: 'Mandi',
+    language: 'Marathi',
+    status: 'Live',
   },
   {
-    question: 'Best mobility aids for seniors with arthritis',
-    volume: '9.8K',
-    difficulty: 'Medium',
-    status: 'Drafting',
+    query: 'Soil testing centre near Nagpur',
+    category: 'Soil',
+    language: 'Hindi',
+    status: 'Answered',
   },
   {
-    question: 'How to prevent falls in the bathroom?',
-    volume: '7.1K',
-    difficulty: 'Low',
-    status: 'Ready',
+    query: 'KCC loan apply kaise kare?',
+    category: 'Loans',
+    language: 'Hindi',
+    status: 'Live',
   },
   {
-    question: 'When should families consider assisted living?',
-    volume: '6.3K',
-    difficulty: 'High',
-    status: 'Drafting',
+    query: 'Cotton pest identification from photo',
+    category: 'Diagnosis',
+    language: 'Telugu',
+    status: 'Answered',
   },
 ]
 
@@ -136,7 +137,7 @@ export default function DashboardMockup() {
 
         <div className="mx-auto flex items-center gap-1.5 rounded-md bg-[#1a1a1c] px-6 py-1">
           <Monitor className="h-3.5 w-3.5 text-white/40" />
-          <span className="text-[10px] text-white/60">questly.ai</span>
+          <span className="text-[10px] text-white/60">krishi-upai.in</span>
         </div>
 
         <div className="flex items-center gap-2.5">
@@ -156,10 +157,10 @@ export default function DashboardMockup() {
           </div>
 
           <div className="mb-4 flex items-center gap-2">
-            <span className="flex h-4 w-4 items-center justify-center rounded bg-[#e8553f] text-[8px] font-medium text-white">
-              C
+            <span className="flex h-4 w-4 items-center justify-center rounded bg-[#16a34a] text-[8px] font-medium text-white">
+              K
             </span>
-            <span className="text-[10px] text-white/80">CareNest</span>
+            <span className="text-[10px] text-white/80">Krishi - UPAI</span>
           </div>
 
           <nav className="mb-4 space-y-2">
@@ -167,22 +168,22 @@ export default function DashboardMockup() {
               href="#"
               className="flex items-center gap-2 text-[10px] text-white/60"
             >
-              <Compass className="h-3 w-3" />
-              Uncover
+              <Mic className="h-3 w-3" />
+              Sahayak
             </a>
             <a
               href="#"
               className="flex items-center gap-2 text-[10px] text-white/60"
             >
               <Layers className="h-3 w-3" />
-              Subjects
+              Services
             </a>
             <a
               href="#"
               className="flex items-center gap-2 text-[10px] text-white/60"
             >
               <ListTodo className="h-3 w-3" />
-              Inbox
+              Queries
             </a>
           </nav>
 
@@ -191,13 +192,13 @@ export default function DashboardMockup() {
               RECENT
             </p>
             <ul className="space-y-1.5">
-              {recentArticles.map((article) => (
+              {recentQueries.map((query) => (
                 <li
-                  key={article}
+                  key={query}
                   className="flex items-start gap-1.5 text-[9px] leading-snug text-white/50"
                 >
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#28c840]/70" />
-                  {article}
+                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#16a34a]/70" />
+                  {query}
                 </li>
               ))}
             </ul>
@@ -208,13 +209,13 @@ export default function DashboardMockup() {
         <main className="min-w-0 flex-1 p-4">
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#e8553f] text-sm font-medium text-white">
-                C
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#16a34a] text-sm font-medium text-white">
+                K
               </span>
               <div>
-                <p className="text-sm font-medium text-white">CareNest</p>
+                <p className="text-sm font-medium text-white">Krishi - UPAI</p>
                 <p className="text-[10px] text-white/45">
-                  Senior care content workspace
+                  Agriculture portal for Indian farmers
                 </p>
               </div>
             </div>
@@ -222,21 +223,21 @@ export default function DashboardMockup() {
               type="button"
               className="flex items-center gap-1.5 rounded-md bg-white/10 px-3 py-1.5 text-[10px] font-medium text-white"
             >
-              <Sparkles className="h-3 w-3" />
-              Generate
+              <Mic className="h-3 w-3" />
+              Ask Sahayak
             </button>
           </div>
 
           {/* Stats grid */}
           <div className="mb-4 grid grid-cols-4 divide-x divide-white/5 rounded-xl bg-white/[0.03] ring-1 ring-white/5">
             {[
-              { label: 'RELEASED', value: '62', sub: 'Posts indexed' },
-              { label: 'BREADTH', value: '12', sub: 'Subject groups' },
-              { label: 'REMAINING', value: '412', sub: 'Ready to draft' },
+              { label: 'FARMERS', value: '1.2L', sub: 'Active users' },
+              { label: 'LANGUAGES', value: '11', sub: 'Supported' },
+              { label: 'MANDIS', value: '2,500+', sub: 'Live prices' },
               {
-                label: 'MAX REACH',
-                value: '3,156,200',
-                sub: 'Searches a month',
+                label: 'SCHEMES',
+                value: '120+',
+                sub: 'Central & state',
               },
             ].map((stat) => (
               <div key={stat.label} className="px-3 py-3">
@@ -249,9 +250,9 @@ export default function DashboardMockup() {
             ))}
           </div>
 
-          {/* Subject cards */}
+          {/* Service cards */}
           <div className="mb-4 grid grid-cols-3 gap-2">
-            {subjectCards.map((card) => (
+            {serviceCards.map((card) => (
               <div
                 key={card.title}
                 className="rounded-lg bg-white/[0.03] p-3 ring-1 ring-white/5"
@@ -260,30 +261,30 @@ export default function DashboardMockup() {
                   {card.title}
                 </p>
                 <p className="mt-1 text-[9px] text-white/40">
-                  {card.count} articles
+                  {card.count} updates today
                 </p>
               </div>
             ))}
           </div>
 
-          {/* Drafting inbox */}
+          {/* Queries inbox */}
           <div className="rounded-lg bg-white/[0.03] ring-1 ring-white/5">
             <div className="border-b border-white/5 px-3 py-2">
               <p className="text-[10px] font-medium text-white/70">
-                Drafting inbox
+                Farmer queries
               </p>
             </div>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-white/5 text-left">
                   <th className="px-3 py-2 text-[8px] tracking-wider text-white/35">
-                    QUESTION
+                    QUERY
                   </th>
                   <th className="px-3 py-2 text-[8px] tracking-wider text-white/35">
-                    VOLUME
+                    CATEGORY
                   </th>
                   <th className="px-3 py-2 text-[8px] tracking-wider text-white/35">
-                    DIFFICULTY
+                    LANGUAGE
                   </th>
                   <th className="px-3 py-2 text-[8px] tracking-wider text-white/35">
                     STATUS
@@ -292,21 +293,21 @@ export default function DashboardMockup() {
               </thead>
               <tbody>
                 {inboxRows.map((row) => (
-                  <tr key={row.question} className="border-b border-white/5 last:border-b-0">
+                  <tr key={row.query} className="border-b border-white/5 last:border-b-0">
                     <td className="max-w-[200px] truncate px-3 py-2 text-[9px] text-white/60">
-                      {row.question}
+                      {row.query}
                     </td>
                     <td className="px-3 py-2 text-[9px] text-white/50">
-                      {row.volume}
+                      {row.category}
                     </td>
                     <td className="px-3 py-2 text-[9px] text-white/50">
-                      {row.difficulty}
+                      {row.language}
                     </td>
                     <td
                       className={`px-3 py-2 text-[9px] ${
-                        row.status === 'Drafting'
-                          ? 'text-[#febc2e]/80'
-                          : 'text-[#28c840]/70'
+                        row.status === 'Live'
+                          ? 'text-[#16a34a]/80'
+                          : 'text-[#febc2e]/70'
                       }`}
                     >
                       {row.status}

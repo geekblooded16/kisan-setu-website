@@ -4,13 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          'Nimbus Sans TW01',
-          'Helvetica Neue',
-          'Helvetica',
-          'Arial',
-          'sans-serif',
-        ],
+        sans: ['Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        display: ['Instrument Serif', 'Georgia', 'serif'],
       },
     },
   },

@@ -1,6 +1,6 @@
-# Questly — SaaS Landing Page
+# Kisan Setu — Landing Page
 
-Full-viewport hero section for **Questly**, built with React, TypeScript, Tailwind CSS 3, and Vite.
+Full-viewport hero section for **Kisan Setu**, built with React, TypeScript, Tailwind CSS 3, and Vite.
 
 ## Stack
 
