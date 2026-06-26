@@ -60,12 +60,12 @@ export function SectionBadge({
 
   return (
     <div
-      className={`inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 transition-colors ${badgeBarStyles[variant]} ${className}`}
+      className={`inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 transition-colors ${badgeBarStyles[variant]} ${className}`}
     >
       {icon}
       <AnimatedShinyText
         tone={tone}
-        className="text-[11px] font-semibold uppercase tracking-[0.14em]"
+        className="text-[11px] font-semibold normal-case tracking-[0.14em]"
       >
         {children}
       </AnimatedShinyText>

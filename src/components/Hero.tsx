@@ -18,6 +18,8 @@ export default function Hero() {
     >
       <Navbar />
 
+      <div className="h-14 shrink-0 sm:h-16" aria-hidden="true" />
+
       <div className="flex-1 min-h-2 shrink-0 sm:min-h-8 lg:min-h-12" />
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-5 text-center sm:px-8">

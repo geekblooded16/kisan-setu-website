@@ -16,13 +16,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8">
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:gap-12">
           <div className="sm:col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2.5">
+            <div className="flex flex-col items-start justify-start gap-2.5">
               <Logo className="h-[50px] w-[50px] shrink-0" />
               <div className="flex flex-col gap-0.5">
                 <p className="font-sans text-lg font-semibold text-green-600">
                   Kisan UPAI
                 </p>
-                <p className="text-xs font-semibold uppercase tracking-[0.5px] text-gray-500">
+                <p className="text-xs font-semibold tracking-[0.5px] text-gray-500">
                   State NFO Administration Directory
                 </p>
               </div>
@@ -34,8 +34,8 @@ export default function Footer() {
             </p>
           </div>
 
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-900">
+          <div className="mt-16 h-fit">
+            <h3 className="text-sm font-semibold tracking-[0.5px] text-gray-900">
               Initiative Pillars
             </h3>
             <ul className="mt-4 space-y-3">
@@ -52,11 +52,11 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="sm:col-span-2 md:col-span-1">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-900">
+          <div className="mt-16 h-fit sm:col-span-2 md:col-span-1">
+            <h3 className="text-sm font-semibold tracking-[0.5px] text-gray-900">
               NFO Helpdesk Office
             </h3>
-            <address className="mt-4 not-italic text-[15px] leading-relaxed text-gray-600">
+            <address className="mt-3 not-italic text-[15px] leading-relaxed text-gray-600">
               Agriculture Directorate Complex,
               <br />
               Madan Mohan Malviya Marg,
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mb-6 px-5 sm:px-8">
+      <div className="px-5 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <FlickeringBrand tone="green" />
         </div>

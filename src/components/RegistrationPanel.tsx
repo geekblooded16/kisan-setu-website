@@ -73,15 +73,15 @@ export default function RegistrationPanel({
           </button>
         )}
 
-        <div className="flex flex-1 flex-col p-6 sm:p-8 md:p-10 lg:p-12">
-          <div className="mb-6 sm:mb-8">
+        <div className="flex flex-1 flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12">
+          <div className="mb-6 flex flex-col gap-1 sm:mb-8">
             <h3
               id={titleId}
               className="pr-10 font-sans text-2xl font-semibold leading-tight tracking-tight text-brand-green sm:text-[1.75rem]"
             >
-              Initiate Your Network Onboarding
+              Start Your Network Onboarding
             </h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-gray-600">
+            <p className="text-[15px] leading-relaxed text-gray-600">
               Submit your technical expression of interest to join the official
               UP State Public Directory registry.
             </p>

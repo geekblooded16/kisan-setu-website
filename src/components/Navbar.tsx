@@ -12,6 +12,8 @@ const navLinks = [
 
 const languages = ['EN', 'HI'] as const
 
+const navEase = 'duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]'
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -19,7 +21,14 @@ export default function Navbar() {
   const { openRegistration } = useRegistrationModal()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 300)
+    const onScroll = () => {
+      setScrolled((prev) => {
+        if (window.scrollY > 80) return true
+        if (window.scrollY < 16) return false
+        return prev
+      })
+    }
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -33,8 +42,20 @@ export default function Navbar() {
   }, [mobileOpen])
 
   return (
-    <header className="animate-fade-down relative z-20 px-4 py-3.5 sm:px-8 sm:py-5 lg:px-10">
-      <div className="flex items-center justify-between gap-2">
+    <header
+      className={`fixed left-0 right-0 z-50 w-full transition-[top,padding] ${navEase} ${
+        scrolled
+          ? 'top-3 px-4 sm:top-4 sm:px-6 lg:px-8'
+          : 'top-0 px-4 py-3.5 sm:px-8 sm:py-5 lg:px-10'
+      }`}
+    >
+      <div
+        className={`relative mx-auto flex max-w-6xl items-center justify-between gap-2 transition-[background-color,box-shadow,border-radius,padding,backdrop-filter] ${navEase} ${
+          scrolled
+            ? 'rounded-full border border-white/35 bg-white/60 px-3.5 py-2.5 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:px-5 sm:py-3'
+            : 'rounded-none border-0 border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-none'
+        }`}
+      >
         <a href="#top" className="flex min-w-0 items-center gap-2 text-gray-900">
           <Logo className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
           <span className="truncate font-sans text-sm font-semibold tracking-tight sm:text-base">
@@ -58,8 +79,12 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-4">
-          <div className="hidden items-center rounded-full bg-gray-900/10 p-0.5 text-[11px] font-medium min-[380px]:flex">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+          <div
+            className={`hidden items-center rounded-full p-0.5 text-[11px] font-medium transition-colors ${navEase} min-[380px]:flex ${
+              scrolled ? 'bg-gray-900/8' : 'bg-gray-900/5'
+            }`}
+          >
             {languages.map((l) => (
               <button
                 key={l}
@@ -79,17 +104,21 @@ export default function Navbar() {
           <Button
             variant="outline"
             onClick={openRegistration}
-            className="hidden h-9 min-h-0 !border-0 !bg-gray-900/10 px-3.5 !py-0 text-[13px] sm:inline-flex sm:px-4"
+            className={`hidden h-9 min-h-0 px-3.5 !py-0 text-[13px] transition-[background-color,border-color,backdrop-filter] ${navEase} sm:inline-flex sm:px-4 ${
+              scrolled
+                ? 'border-gray-900/10 bg-white/45 backdrop-blur-sm'
+                : '!border-0 !bg-gray-900/10'
+            }`}
           >
             Register Now
           </Button>
 
           <ButtonLink
             href="#features"
-            className={`hidden px-3.5 text-[13px] sm:inline-flex sm:px-4 md:px-5 ${
+            className={`hidden px-3.5 text-[13px] transition-[opacity,transform] ${navEase} sm:inline-flex sm:px-4 md:px-5 ${
               scrolled
-                ? 'opacity-100 translate-y-0'
-                : 'pointer-events-none opacity-0 -translate-y-2'
+                ? 'translate-y-0 opacity-100'
+                : 'pointer-events-none translate-y-1 opacity-0'
             }`}
           >
             Download App
@@ -117,60 +146,68 @@ export default function Navbar() {
             )}
           </button>
         </div>
-      </div>
 
-      {mobileOpen && (
-        <nav
-          className="absolute left-4 right-4 top-full z-30 mt-2 max-h-[calc(100dvh-5rem)] overflow-y-auto rounded-2xl bg-white/95 px-4 py-2 ring-1 ring-gray-200 backdrop-blur-xl md:hidden"
-          aria-label="Mobile"
-        >
-          <div className="mb-2 flex items-center rounded-full bg-gray-900/5 p-0.5 text-[11px] font-medium min-[380px]:hidden">
-            {languages.map((l) => (
-              <button
-                key={l}
-                type="button"
-                onClick={() => setLang(l)}
-                className={`min-h-9 flex-1 rounded-full px-2.5 py-1.5 transition-all ${
-                  lang === l
-                    ? 'bg-gray-900 text-white shadow-sm'
-                    : 'text-gray-600'
-                }`}
-              >
-                {l}
-              </button>
-            ))}
-          </div>
-
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="flex min-h-12 items-center gap-1 border-b border-gray-200 py-3 text-[15px] text-gray-700 transition-colors hover:text-gray-900"
-              onClick={() => setMobileOpen(false)}
-            >
-              {link.label}
-              {link.hasChevron && <ChevronDown className="h-3.5 w-3.5" />}
-            </a>
-          ))}
-
-          <button
-            type="button"
-            className="flex min-h-12 w-full items-center border-b border-gray-200 py-3 text-left text-[15px] font-semibold text-gray-900"
-            onClick={() => {
-              setMobileOpen(false)
-              openRegistration()
-            }}
+        {mobileOpen && (
+          <nav
+            className={`absolute left-0 right-0 top-[calc(100%+0.5rem)] z-30 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-2xl px-4 py-2 backdrop-blur-xl md:hidden ${
+              scrolled
+                ? 'border border-white/40 bg-white/80 shadow-[0_16px_48px_rgba(15,23,42,0.12)]'
+                : 'border border-gray-200/80 bg-white/95 shadow-lg'
+            }`}
+            aria-label="Mobile"
           >
-            Register Now
-          </button>
+            <div className="mb-2 flex items-center rounded-full bg-gray-900/5 p-0.5 text-[11px] font-medium min-[380px]:hidden">
+              {languages.map((l) => (
+                <button
+                  key={l}
+                  type="button"
+                  onClick={() => setLang(l)}
+                  className={`min-h-9 flex-1 rounded-full px-2.5 py-1.5 transition-all ${
+                    lang === l
+                      ? 'bg-gray-900 text-white shadow-sm'
+                      : 'text-gray-600'
+                  }`}
+                >
+                  {l}
+                </button>
+              ))}
+            </div>
 
-          <div className="py-3">
-            <ButtonLink href="#features" fullWidth onClick={() => setMobileOpen(false)}>
-              Download App
-            </ButtonLink>
-          </div>
-        </nav>
-      )}
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="flex min-h-12 items-center gap-1 border-b border-gray-200/80 py-3 text-[15px] text-gray-700 transition-colors hover:text-gray-900"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+                {link.hasChevron && <ChevronDown className="h-3.5 w-3.5" />}
+              </a>
+            ))}
+
+            <button
+              type="button"
+              className="flex min-h-12 w-full items-center border-b border-gray-200/80 py-3 text-left text-[15px] font-semibold text-gray-900"
+              onClick={() => {
+                setMobileOpen(false)
+                openRegistration()
+              }}
+            >
+              Register Now
+            </button>
+
+            <div className="py-3">
+              <ButtonLink
+                href="#features"
+                fullWidth
+                onClick={() => setMobileOpen(false)}
+              >
+                Download App
+              </ButtonLink>
+            </div>
+          </nav>
+        )}
+      </div>
     </header>
   )
 }

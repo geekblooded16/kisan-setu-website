@@ -28,7 +28,7 @@ export default function RegistrationForm({ id, onSubmit }: RegistrationFormProps
   }
 
   return (
-    <form id={id} onSubmit={handleSubmit} className="mt-auto space-y-4 sm:space-y-5">
+    <form id={id} onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
       <div>
         <label
           htmlFor={`${id ?? 'registration'}-org`}
@@ -109,17 +109,16 @@ export default function RegistrationForm({ id, onSubmit }: RegistrationFormProps
         </div>
       </div>
 
-      <label className="flex cursor-pointer items-start gap-3">
+      <label className="mt-5 flex w-full cursor-pointer items-center justify-center gap-3">
         <input
           type="checkbox"
           checked={agreed}
           onChange={(event) => setAgreed(event.target.checked)}
           required
-          className="mt-1 h-5 w-5 shrink-0 rounded border-gray-300 text-emerald-700 focus:ring-emerald-600/30"
+          className="h-5 w-5 shrink-0 rounded border-gray-300 text-emerald-700 focus:ring-emerald-600/30"
         />
         <span className="text-[15px] leading-relaxed text-gray-600">
-          We are interested in leveraging standardized protocols to scale our
-          services.
+          We want to scale using standardized protocols.
         </span>
       </label>
 

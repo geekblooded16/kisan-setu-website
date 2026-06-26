@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
         display: ['Instrument Serif', 'Georgia', 'serif'],
+        'inter-display': ['"Inter Display"', 'Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
         brand: {

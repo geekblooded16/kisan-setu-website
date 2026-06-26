@@ -108,7 +108,43 @@
   .animate-hero-rise,
   .animate-float-left,
   .animate-float-right,
-  .animate-shiny-text {
+  .animate-shiny-text,
+  .testimonial-intro,
+  .testimonial-card {
     animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.testimonial-intro,
+.testimonial-card {
+  opacity: 0;
+}
+
+.testimonial-intro {
+  transform: translateY(20px);
+}
+
+.testimonial-card {
+  transform: translateX(40px) scale(0.98);
+}
+
+.testimonial-visible .testimonial-intro {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.testimonial-visible .testimonial-card {
+  animation: testimonial-slide-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+@keyframes testimonial-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
   }
 }

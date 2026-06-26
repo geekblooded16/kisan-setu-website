@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import ProviderPortalSection from './components/ProviderPortalSection'
 import RegistrationModal from './components/RegistrationModal'
 import RegistrationSection from './components/RegistrationSection'
+import TestimonialSection from './components/TestimonialSection'
 import { RegistrationModalProvider } from './context/RegistrationModalContext'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <FeaturesSection />
       <ProviderPortalSection />
       <RegistrationSection />
+      <TestimonialSection />
       <Footer />
       <RegistrationModal />
     </RegistrationModalProvider>

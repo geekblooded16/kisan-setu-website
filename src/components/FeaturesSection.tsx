@@ -74,8 +74,8 @@ export default function FeaturesSection() {
         <div className="order-1 lg:order-2">
           <SectionBadge>Mobile AgTech Platform</SectionBadge>
 
-          <SectionHeading>
-            Kisan UPAI Android App Empowering Farmers in the Palm of Their Hand.
+          <SectionHeading className="leading-[48px]">
+            Kisan UPAI App - Smart AI + Everything farmers need
           </SectionHeading>
 
           <SectionLead>
@@ -85,7 +85,7 @@ export default function FeaturesSection() {
             high performance, ease of use, and local language accessibility.
           </SectionLead>
 
-          <div className="mt-6 space-y-3 sm:mt-8">
+          <div className="mt-6 flex flex-col gap-4 sm:mt-8">
             {features.map((feature) => {
               const isActive = feature.id === activeId
               const Icon = feature.icon
@@ -96,10 +96,10 @@ export default function FeaturesSection() {
                   type="button"
                   onClick={() => setActiveId(feature.id)}
                   aria-expanded={isActive}
-                  className={`w-full rounded-2xl border px-4 py-4 text-left transition-all duration-200 sm:px-5 sm:py-5 ${
+                  className={`w-full rounded-[20px] p-4 text-left transition-all duration-200 ${
                     isActive
-                      ? 'border-emerald-600/70 bg-white shadow-[0_4px_24px_rgba(26,61,46,0.14)]'
-                      : 'border-gray-200 bg-gray-50/60 hover:border-gray-300 hover:bg-white'
+                      ? 'border border-emerald-600/70 bg-white shadow-[0_4px_24px_rgba(26,61,46,0.14)]'
+                      : 'border-0 bg-transparent hover:bg-white'
                   }`}
                 >
                   <div
@@ -116,7 +116,7 @@ export default function FeaturesSection() {
                     >
                       <Icon className="h-[18px] w-[18px]" />
                     </span>
-                    <div className="min-w-0 flex-1">
+                    <div className="min-w-0 flex-1 flex flex-col gap-1">
                       <h3
                         className={`text-[15px] font-semibold sm:text-base ${
                           isActive ? 'text-brand-green' : 'text-gray-800'
@@ -125,7 +125,7 @@ export default function FeaturesSection() {
                         {feature.title}
                       </h3>
                       {isActive && (
-                        <p className="mt-2 text-[15px] leading-relaxed text-gray-600">
+                        <p className="text-[15px] leading-relaxed text-gray-600">
                           {feature.description}
                         </p>
                       )}

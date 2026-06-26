@@ -152,7 +152,7 @@ export default function FlickeringBrand({
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={`h-[4.48rem] w-full sm:h-[5.6rem] lg:h-[6.72rem] ${className}`}
+      className={`h-[2.688rem] w-full sm:h-[3.36rem] lg:h-[4.032rem] ${className}`}
     />
   )
 }
