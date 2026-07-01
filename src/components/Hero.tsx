@@ -39,7 +39,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-[70rem] px-5 text-center sm:px-8">
         <SectionBadge
-          variant="light"
+          variant="glass"
           textClassName="text-xs"
           className="mx-auto mb-5 animate-fade-up sm:mb-6"
         >
