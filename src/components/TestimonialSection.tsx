@@ -67,7 +67,7 @@ export default function TestimonialSection() {
           </SectionLead>
         </div>
 
-        <div className="testimonial-card relative min-h-[280px] overflow-hidden md:mr-10 md:min-h-[360px]">
+        <div className="testimonial-card relative min-h-[280px] overflow-visible md:mr-10 md:min-h-[360px]">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-3 -top-3 z-0 h-24 w-32 rounded-2xl bg-gray-100/80 sm:-right-4 sm:-top-4 sm:h-28 sm:w-36"
