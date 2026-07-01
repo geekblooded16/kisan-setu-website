@@ -58,7 +58,7 @@ export default function TestimonialSection() {
           <SectionBadge className="mx-auto md:mx-0">
             Leadership Vision
           </SectionBadge>
-          <SectionHeading align="center" className="md:text-left !leading-[48px]">
+          <SectionHeading align="center" className="leading-tight md:text-left sm:leading-[1.2]">
             Initiative for farmers by Uttar Pradesh Government
           </SectionHeading>
           <SectionLead align="center" className="md:text-left">
@@ -67,7 +67,7 @@ export default function TestimonialSection() {
           </SectionLead>
         </div>
 
-        <div className="testimonial-card relative min-h-[280px] md:mr-10 md:min-h-[360px]">
+        <div className="testimonial-card relative min-h-[280px] overflow-hidden md:mr-10 md:min-h-[360px]">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-3 -top-3 z-0 h-24 w-32 rounded-2xl bg-gray-100/80 sm:-right-4 sm:-top-4 sm:h-28 sm:w-36"
@@ -80,7 +80,7 @@ export default function TestimonialSection() {
           <article className="relative z-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.08)] sm:p-8">
             <Quote
               aria-hidden="true"
-              className="mb-4 h-8 w-8 text-amber-500/80"
+              className="mb-4 h-8 w-8 text-[#00c771]"
               strokeWidth={1.5}
             />
 
@@ -103,7 +103,7 @@ export default function TestimonialSection() {
                 <p className="font-sans text-[15px] font-semibold text-gray-900 sm:text-base">
                   {testimonial.name}
                 </p>
-                <p className="mt-0.5 text-xs font-medium tracking-[0.12em] text-amber-600 sm:text-[13px]">
+                <p className="mt-0.5 text-xs font-medium tracking-[0.12em] text-[#16a34a] sm:text-[13px]">
                   {testimonial.role}
                 </p>
               </div>

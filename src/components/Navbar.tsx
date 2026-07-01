@@ -1,24 +1,28 @@
 import { useState, useEffect } from 'react'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import { languages, useLanguage } from '../context/LanguageContext'
 import { useRegistrationModal } from '../context/RegistrationModalContext'
-import Button, { ButtonLink } from './ui/Button'
+import Button from './ui/Button'
+import { ShinyButtonLink } from './ui/shiny-button'
 import Logo from './Logo'
 
-const navLinks = [
-  { label: 'Features', href: '#features', hasChevron: true },
-  { label: 'How It Works', href: '#provider-portal', hasChevron: false },
-  { label: 'About', href: '#about', hasChevron: false },
-]
-
-const languages = ['EN', 'HI'] as const
-
 const navEase = 'duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]'
+
+const navButtonSizeClass =
+  'h-9 !min-h-9 !max-h-9 shrink-0 px-3.5 !py-0 text-[13px] font-semibold leading-none sm:px-4'
+
+const navShinyButtonClass =
+  '!h-9 !min-h-9 !max-h-9 shrink-0 !px-3.5 !py-0 !text-[13px] !font-semibold !leading-none sm:!px-4'
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [lang, setLang] = useState<(typeof languages)[number]>('EN')
+  const { language, setLanguage } = useLanguage()
   const { openRegistration } = useRegistrationModal()
+
+  const langToggleShell = scrolled
+    ? 'border border-gray-900/10 bg-white/45 backdrop-blur-sm'
+    : 'bg-gray-900/5'
 
   useEffect(() => {
     const onScroll = () => {
@@ -43,17 +47,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed left-0 right-0 z-50 w-full transition-[top,padding] ${navEase} ${
-        scrolled
-          ? 'top-3 px-4 sm:top-4 sm:px-6 lg:px-8'
-          : 'top-0 px-4 py-3.5 sm:px-8 sm:py-5 lg:px-10'
+      className={`fixed left-0 right-0 z-50 w-full max-w-[100vw] overflow-x-clip transition-[top,padding] sm:px-8 ${navEase} ${
+        scrolled ? 'top-3 px-5 sm:top-4' : 'top-0 px-1 py-3.5 sm:py-5'
       }`}
     >
       <div
-        className={`relative mx-auto flex max-w-6xl items-center justify-between gap-2 transition-[background-color,box-shadow,border-radius,padding,backdrop-filter] ${navEase} ${
+        className={`relative mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-4 transition-[background-color,box-shadow,border-radius,padding,backdrop-filter] ${navEase} ${
           scrolled
-            ? 'rounded-full border border-white/35 bg-white/60 px-3.5 py-2.5 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:px-5 sm:py-3'
-            : 'rounded-none border-0 border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-none'
+            ? 'rounded-full border border-white/35 bg-white/60 py-2.5 shadow-[0_8px_32px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:py-3'
+            : 'rounded-none border-0 border-transparent bg-transparent py-0 shadow-none backdrop-blur-none'
         }`}
       >
         <a href="#top" className="flex min-w-0 items-center gap-2 text-gray-900">
@@ -63,40 +65,22 @@ export default function Navbar() {
           </span>
         </a>
 
-        <nav
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex"
-          aria-label="Main"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="flex items-center gap-1 text-sm text-gray-700 transition-colors hover:text-gray-900"
-            >
-              {link.label}
-              {link.hasChevron && <ChevronDown className="h-3.5 w-3.5" />}
-            </a>
-          ))}
-        </nav>
-
         <div className="flex shrink-0 items-center gap-3 sm:gap-4">
           <div
-            className={`hidden items-center rounded-full p-0.5 text-[11px] font-medium transition-colors ${navEase} min-[380px]:flex ${
-              scrolled ? 'bg-gray-900/8' : 'bg-gray-900/5'
-            }`}
+            className={`hidden h-9 w-fit shrink-0 items-center rounded-full p-0.5 text-[11px] font-medium transition-[background-color,border-color,backdrop-filter] ${navEase} min-[380px]:flex ${langToggleShell}`}
           >
             {languages.map((l) => (
               <button
-                key={l}
+                key={l.code}
                 type="button"
-                onClick={() => setLang(l)}
-                className={`min-h-8 min-w-8 rounded-full px-2.5 py-1 transition-all ${
-                  lang === l
-                    ? 'bg-gray-900 text-white shadow-sm'
+                onClick={() => setLanguage(l.code)}
+                className={`flex h-8 min-h-8 w-8 shrink-0 items-center justify-center rounded-full px-2 transition-all ${
+                  language === l.code
+                    ? 'bg-gray-900/10 text-gray-900'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                {l}
+                {l.label}
               </button>
             ))}
           </div>
@@ -104,7 +88,7 @@ export default function Navbar() {
           <Button
             variant="outline"
             onClick={openRegistration}
-            className={`hidden h-9 min-h-0 px-3.5 !py-0 text-[13px] transition-[background-color,border-color,backdrop-filter] ${navEase} sm:inline-flex sm:px-4 ${
+            className={`hidden ${navButtonSizeClass} transition-[background-color,border-color,backdrop-filter] ${navEase} md:inline-flex ${
               scrolled
                 ? 'border-gray-900/10 bg-white/45 backdrop-blur-sm'
                 : '!border-0 !bg-gray-900/10'
@@ -113,24 +97,15 @@ export default function Navbar() {
             Register Now
           </Button>
 
-          <ButtonLink
-            href="#features"
-            className={`hidden px-3.5 text-[13px] transition-[opacity,transform] ${navEase} sm:inline-flex sm:px-4 md:px-5 ${
-              scrolled
-                ? 'translate-y-0 opacity-100'
-                : 'pointer-events-none translate-y-1 opacity-0'
-            }`}
-          >
-            Download App
-          </ButtonLink>
-
-          <ButtonLink
-            href="#features"
-            size="md"
-            className="px-3.5 text-[13px] sm:hidden"
-          >
-            Download
-          </ButtonLink>
+          {scrolled && (
+            <ShinyButtonLink
+              href="#features"
+              size="sm"
+              className={`${navShinyButtonClass} max-md:!hidden md:inline-flex transition-[opacity,transform] ${navEase}`}
+            >
+              Download App
+            </ShinyButtonLink>
+          )}
 
           <button
             type="button"
@@ -156,54 +131,55 @@ export default function Navbar() {
             }`}
             aria-label="Mobile"
           >
-            <div className="mb-2 flex items-center rounded-full bg-gray-900/5 p-0.5 text-[11px] font-medium min-[380px]:hidden">
+            <div
+              className={`mb-2 flex h-9 shrink-0 items-center rounded-full text-[11px] font-medium min-[380px]:hidden ${
+                scrolled
+                  ? 'border border-gray-900/10 bg-white/45'
+                  : 'bg-gray-900/5'
+              }`}
+            >
               {languages.map((l) => (
                 <button
-                  key={l}
+                  key={l.code}
                   type="button"
-                  onClick={() => setLang(l)}
-                  className={`min-h-9 flex-1 rounded-full px-2.5 py-1.5 transition-all ${
-                    lang === l
-                      ? 'bg-gray-900 text-white shadow-sm'
+                  onClick={() => setLanguage(l.code)}
+                  className={`flex h-9 min-h-9 flex-1 items-center justify-center rounded-full px-2.5 transition-all ${
+                    language === l.code
+                      ? 'bg-gray-900/10 text-gray-900'
                       : 'text-gray-600'
                   }`}
                 >
-                  {l}
+                  {l.label}
                 </button>
               ))}
             </div>
 
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="flex min-h-12 items-center gap-1 border-b border-gray-200/80 py-3 text-[15px] text-gray-700 transition-colors hover:text-gray-900"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-                {link.hasChevron && <ChevronDown className="h-3.5 w-3.5" />}
-              </a>
-            ))}
-
-            <button
-              type="button"
-              className="flex min-h-12 w-full items-center border-b border-gray-200/80 py-3 text-left text-[15px] font-semibold text-gray-900"
-              onClick={() => {
-                setMobileOpen(false)
-                openRegistration()
-              }}
-            >
-              Register Now
-            </button>
-
-            <div className="py-3">
-              <ButtonLink
-                href="#features"
+            <div className="mt-2 flex flex-col gap-3 py-3">
+              <Button
+                variant="outline"
                 fullWidth
+                onClick={() => {
+                  setMobileOpen(false)
+                  openRegistration()
+                }}
+                className={`${navButtonSizeClass} ${
+                  scrolled
+                    ? 'border-gray-900/10 bg-white/45 backdrop-blur-sm'
+                    : '!border-0 !bg-gray-900/10'
+                }`}
+              >
+                Register Now
+              </Button>
+
+              <ShinyButtonLink
+                href="#features"
+                size="sm"
+                fullWidth
+                className={`${navShinyButtonClass} !w-full justify-center`}
                 onClick={() => setMobileOpen(false)}
               >
                 Download App
-              </ButtonLink>
+              </ShinyButtonLink>
             </div>
           </nav>
         )}

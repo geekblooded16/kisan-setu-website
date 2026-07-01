@@ -1,6 +1,5 @@
-import { Sprout, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import RegistrationForm from './RegistrationForm'
-import { SectionBadge } from './ui/SectionHeader'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -39,12 +38,6 @@ export default function RegistrationPanel({
 
         <div className="relative z-10 flex h-full min-h-[22rem] flex-col items-start justify-start p-8 text-white md:min-h-[36rem] md:p-10 lg:p-12">
           <div className="space-y-4">
-            <SectionBadge
-              variant="dark"
-              icon={<Sprout className="h-3.5 w-3.5 shrink-0 text-white/90" />}
-            >
-              Beckn Provider Portal
-            </SectionBadge>
             <h2 className="font-sans text-2xl font-semibold leading-[1.15] tracking-tight sm:text-3xl lg:text-[2rem]">
               Join the UP State Public Directory registry.
             </h2>
@@ -82,8 +75,8 @@ export default function RegistrationPanel({
               Start Your Network Onboarding
             </h3>
             <p className="text-[15px] leading-relaxed text-gray-600">
-              Submit your technical expression of interest to join the official
-              UP State Public Directory registry.
+              For labs, agencies, and companies that serve farmers — register to
+              onboard and offer your services on Kisan UPAI.
             </p>
           </div>
 

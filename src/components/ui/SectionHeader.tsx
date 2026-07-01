@@ -20,7 +20,7 @@ export function SectionShell({
 }: SectionShellProps) {
   const variantClass =
     variant === 'muted'
-      ? ''
+      ? 'bg-gray-50'
       : variant === 'transparent'
         ? ''
         : 'bg-white'
@@ -28,7 +28,7 @@ export function SectionShell({
   return (
     <section
       id={id}
-      className={`px-5 py-14 sm:px-8 sm:py-18 lg:py-24 ${variantClass} ${className}`}
+      className={`overflow-x-clip scroll-mt-20 px-5 py-14 sm:scroll-mt-24 sm:px-8 sm:py-18 lg:py-24 ${variantClass} ${className}`}
     >
       <div className={`mx-auto w-full max-w-6xl ${containerClassName}`}>
         {children}
@@ -37,35 +37,41 @@ export function SectionShell({
   )
 }
 
-type BadgeVariant = 'light' | 'dark' | 'amber'
+type BadgeVariant = 'light' | 'dark' | 'amber' | 'glass'
 
 const badgeBarStyles: Record<BadgeVariant, string> = {
   light: 'border-black/5 bg-[#e9f8ef]',
   dark: 'border-white/20 bg-black/30 backdrop-blur-sm',
   amber: 'border-amber-500/25 bg-amber-500/10',
+  glass:
+    'bg-white/30 shadow-none backdrop-blur-md transition-[box-shadow,background-color] duration-300 hover:bg-white/40 hover:shadow-[0_0_0_1px_rgba(22,163,74,0.4),0_0_22px_rgba(34,197,94,0.45)]',
 }
 
 export function SectionBadge({
   children,
   variant = 'light',
   className = '',
+  textClassName = '',
   icon,
 }: {
   children: ReactNode
   variant?: BadgeVariant
   className?: string
+  textClassName?: string
   icon?: ReactNode
 }) {
   const tone = variant === 'dark' ? 'dark' : variant === 'amber' ? 'amber' : 'light'
 
   return (
     <div
-      className={`inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1 transition-colors ${badgeBarStyles[variant]} ${className}`}
+      className={`inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 ${
+        variant === 'glass' ? '' : 'border transition-colors'
+      } ${badgeBarStyles[variant]} ${className}`}
     >
       {icon}
       <AnimatedShinyText
         tone={tone}
-        className="text-[11px] font-semibold normal-case tracking-[0.14em]"
+        className={`${textClassName || 'text-[11px]'} font-semibold normal-case tracking-[0.5px]`}
       >
         {children}
       </AnimatedShinyText>

@@ -8,7 +8,7 @@ const initiativePillars = [
   'National e-KCC Integrators',
 ]
 
-const legalLinks = ['Disclaimer', 'Privacy Policy', 'Developer Guidelines']
+const privacyPolicyHref = `${import.meta.env.BASE_URL}privacy-policy.html`
 
 export default function Footer() {
   return (
@@ -74,29 +74,23 @@ export default function Footer() {
 
         <div className="mt-10 border-t border-gray-200 pt-6 sm:mt-12">
           <div className="flex flex-col gap-4 text-[13px] text-gray-500 sm:flex-row sm:items-center sm:justify-between">
+            <a
+              href={privacyPolicyHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="min-h-10 py-2 transition-colors hover:text-emerald-700"
+            >
+              Privacy Policy
+            </a>
             <p className="leading-relaxed">
-              © 2026 Department of Agriculture, Uttar Pradesh. Powered by UPDASP
-              &amp; Standard Protocol. All rights reserved.
+              © 2026 Department of Agriculture, Uttar Pradesh. All rights reserved.
             </p>
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-              {legalLinks.map((link, index) => (
-                <span key={link} className="flex items-center gap-2">
-                  {index > 0 && <span aria-hidden="true">•</span>}
-                  <a
-                    href="#"
-                    className="min-h-10 py-2 transition-colors hover:text-emerald-700"
-                  >
-                    {link}
-                  </a>
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>
 
       <div className="px-5 sm:px-8">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-6xl overflow-hidden">
           <FlickeringBrand tone="green" />
         </div>
       </div>

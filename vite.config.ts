@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
@@ -8,4 +9,12 @@ const base = process.env.GITHUB_ACTIONS ? '/kisan-setu-website/' : '/'
 export default defineConfig({
   plugins: [react()],
   base,
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        privacyPolicy: path.resolve(__dirname, 'privacy-policy.html'),
+      },
+    },
+  },
 })
