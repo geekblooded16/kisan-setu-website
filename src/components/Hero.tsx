@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] flex-col overflow-x-clip bg-cover bg-center bg-no-repeat max-lg:pb-8 lg:pb-0"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${HERO_BG})` }}
     >
       <Navbar />
@@ -68,27 +68,25 @@ export default function Hero() {
 
       <div className="flex-1 min-h-3 shrink-0 sm:min-h-8 lg:min-h-12" />
 
-      <div className="relative z-[2] mx-auto mt-2 w-[92%] max-w-md shrink-0 animate-hero-rise pb-4 pt-3 sm:mt-0 sm:w-full sm:max-w-xl sm:pb-0 sm:pt-0 lg:max-w-lg">
-        <div className="flex w-full items-end justify-center gap-2.5 overflow-visible sm:gap-4 lg:gap-6">
-          <img
-            key={`voice-chat-${language}`}
-            src={VOICE_CHAT_MOCKUPS[language]}
-            alt="Krishi Sahayak voice assistant screen"
-            className="animate-float-left w-[46%] max-h-[40vh] -rotate-3 rounded-[1.2rem] object-contain drop-shadow-2xl min-[400px]:max-h-[44vh] sm:max-h-[48vh] sm:rounded-[2rem] lg:max-h-[45vh]"
-          />
-          <img
-            key={`home-${language}`}
-            src={HOME_MOCKUPS[language]}
-            alt="Krishi - UPAI home screen with services"
-            className="animate-float-right w-[46%] max-h-[40vh] translate-y-4 rotate-3 rounded-[1.2rem] object-contain drop-shadow-2xl min-[400px]:max-h-[44vh] sm:max-h-[48vh] sm:translate-y-8 sm:rounded-[2rem] lg:max-h-[45vh]"
-          />
-        </div>
+      <div className="animate-hero-rise relative z-0 mx-auto mt-2 flex w-[92%] max-w-md shrink-0 items-end justify-center gap-2.5 pt-3 [animation-delay:620ms] sm:mt-0 sm:w-full sm:max-w-xl sm:gap-4 sm:pt-0 lg:max-w-lg lg:gap-6">
+        <img
+          key={`voice-chat-${language}`}
+          src={VOICE_CHAT_MOCKUPS[language]}
+          alt="Krishi Sahayak voice assistant screen"
+          className="animate-float-left w-[46%] max-h-[36vh] -rotate-3 rounded-[1.2rem] object-contain drop-shadow-2xl sm:max-h-[48vh] sm:rounded-[2rem] lg:max-h-[45vh]"
+        />
+        <img
+          key={`home-${language}`}
+          src={HOME_MOCKUPS[language]}
+          alt="Krishi - UPAI home screen with services"
+          className="animate-float-right w-[46%] max-h-[36vh] translate-y-4 rotate-3 rounded-[1.2rem] object-contain drop-shadow-2xl sm:max-h-[48vh] sm:translate-y-8 sm:rounded-[2rem] lg:max-h-[45vh]"
+        />
       </div>
 
       <img
         src={GRASS_OVERLAY}
         alt=""
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-auto max-h-[36vh] w-full select-none object-cover object-bottom sm:max-h-none sm:object-contain"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 w-full select-none"
       />
     </section>
   )
